@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddMovie = () => {
   const handleAddMovies = (e) => {
     e.preventDefault();
@@ -28,6 +30,19 @@ const AddMovie = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Successfully you added the movie!",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        }
       });
   };
   return (

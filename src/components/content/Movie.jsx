@@ -29,7 +29,7 @@ const Movie = ({ movie }) => {
           </p>
           {/* See Details Button */}
           <Link
-            to={"/movie"}
+            to={`/movie/${_id}`}
             className="px-4 border-none w-full py-2 btn text-white bg-red-600 transition duration-300"
           >
             See Details
