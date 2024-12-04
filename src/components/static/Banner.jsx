@@ -5,13 +5,13 @@ const Banner = () => {
     <div className="">
       {/* Add a slider (you can use any type of static slider/carousel)  with a minimum of 3 slides and  meaningful information */}
       <div>
-        <div className="carousel text-white rounded-2xl shadow-lg shadow-black w-full h-[65vh] my-8">
+        <div className="carousel absolute top-0 text-white w-full h-[100vh]">
           <div id="slide4" className="carousel-item relative w-full">
             <img
               src="https://i.ibb.co.com/9HMFCqB/MLP-ROW-Muti-title-Mag1-CB1564087979.jpg"
               className="w-full object-cover"
             />
-            <div className="absolute left-20 right-5 top-1/2 flex -translate-y-1/2 transform">
+            <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
               <h1 className="text-5xl font-extrabold">
                 Unlimited movies,
                 <br />
@@ -35,13 +35,30 @@ const Banner = () => {
                 ❯
               </a>
             </div>
+            <div className="absolute left-20 -bottom-5 flex -translate-y-1/2 transform">
+              {/* <p className="text-5xl text-red-500">h</p> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-[25vh] w-20 text-white hover:text-red-600 transition animate-bounce"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 10l7 7m0 0l7-7m-7 7V2"
+                />
+              </svg>
+            </div>
           </div>
           <div id="slide1" className="carousel-item relative w-full">
             <img
               src="https://i.ibb.co.com/VNk0gDB/330744315-716972846472643-4555137785825918072-n.jpg"
               className="w-full object-cover"
             />
-            <div className="absolute left-20 right-5 top-1/2 flex -translate-y-1/2 transform">
+            <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
               <h1 className="text-5xl font-extrabold">
                 Only on Streamly
                 <br />
@@ -71,7 +88,7 @@ const Banner = () => {
               src="https://i.ibb.co.com/jJszm9s/BD-en-20241125-TRIFECTA-658e7f25-278b-487a-b0b6-d0a41dcfbf34-large.jpg"
               className="w-full object-cover"
             />
-            <div className="absolute left-20 right-5 top-1/2 flex -translate-y-1/2 transform">
+            <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
               <h1 className="text-5xl font-extrabold">
                 Bring on the drama
                 <br />
@@ -101,7 +118,7 @@ const Banner = () => {
               src="https://i.ibb.co.com/jJszm9s/BD-en-20241125-TRIFECTA-658e7f25-278b-487a-b0b6-d0a41dcfbf34-large.jpg"
               className="w-full object-cover"
             />
-            <div className="absolute left-20 right-5 top-1/2 flex -translate-y-1/2 transform">
+            <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
               <h1 className="text-5xl font-extrabold">
                 Ready, set, action
                 <br />
@@ -127,6 +144,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
+        <div className="pt-[100vh]"></div>
       </div>
     </div>
   );

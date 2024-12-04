@@ -6,7 +6,7 @@ import SpecialFeatures from "../components/static/ExtraSection/SpecialFeatures";
 
 const Home = () => {
   return (
-    <div className="container mx-auto">
+    <div className="">
       <Banner />
       <div className="space-y-4 text-white my-5">
         <p className="text-center text-white">
