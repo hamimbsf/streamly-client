@@ -12,6 +12,9 @@ export const Navbar = () => {
         <NavLink to="*">All Movies</NavLink>
       </li>
       <li>
+        <NavLink to="/add-movies">Add Movies</NavLink>
+      </li>
+      <li>
         <NavLink to="*">My Favorites</NavLink>
       </li>
       <li>
