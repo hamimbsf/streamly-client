@@ -16,8 +16,19 @@ const AddMovie = () => {
       releaseYear,
       summary,
     };
-    /*  */
+    /* posted data to backend */
     console.log(movieDetails);
+    fetch("http://localhost:3000/all-movies", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(movieDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <>
@@ -64,6 +75,7 @@ const AddMovie = () => {
                 <option value="comedy">Comedy</option>
                 <option value="drama">Drama</option>
                 <option value="horror">Horror</option>
+                <option value="si-fi">Si-Fi</option>
               </select>
             </div>
 
