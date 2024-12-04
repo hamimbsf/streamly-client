@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import FeaturedMovies from "../components/FeaturedMovies/FeaturedMovies";
 import Banner from "../components/static/Banner";
 import Answer from "../components/static/ExtraSection/Answer";
 import SpecialFeatures from "../components/static/ExtraSection/SpecialFeatures";
 
 const Home = () => {
+  // const movies = useLoaderData();
+  // console.log(movies);
+
   return (
     <div className="">
       <Banner />

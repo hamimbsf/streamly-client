@@ -1,6 +1,6 @@
 const SpecialFeatures = () => {
   return (
-    <div className=" text-white">
+    <div className=" container mx-auto text-white">
       <h1 className="text-4xl font-bold mb-4">More Reasons to Join</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="card border-2 border-neutral">
