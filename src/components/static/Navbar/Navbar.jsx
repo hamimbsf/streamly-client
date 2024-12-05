@@ -3,27 +3,41 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 export const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
+
   const navItems = (
     <>
       {" "}
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/all-movies">All Movies</NavLink>
-      </li>
-      <li>
-        <NavLink to="/add-movies">Add Movies</NavLink>
-      </li>
-      <li>
-        <NavLink to="*">My Favorites</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/all-movies">All Movies</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="/add-movies">Add Movies</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="*">My Favorites</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="*">Upcomming Movie</NavLink>
       </li>
     </>
   );
-  const { logOut, user } = useContext(AuthContext);
+  // console.log(user);
+  const image = (
+    <img
+      className="rounded-full w-10"
+      src="https://i.ibb.co.com/kgSRLGw/mysterious-mafia-man-smoking-cigarette-52683-34828.jpg"
+    />
+  );
   const navigate = useNavigate();
   const handleSignOut = () => {
     logOut()
@@ -80,11 +94,14 @@ export const Navbar = () => {
           <details className="dropdown dropdown-end">
             <summary className="btn btn-circle btn-ghost avatar m-1">
               {/* <button className="btn btn-circle btn-ghost avatar"></button> */}
-              <img
-                className="rounded-full w-10"
-                alt={user.displayName}
-                src={user.photoURL}
-              />
+              {user ? (
+                <img
+                  className="rounded-full w-10"
+                  src={user && user.photoURL}
+                />
+              ) : (
+                image
+              )}
             </summary>
 
             <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">

@@ -1,21 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
-  const { signInUser, user } = useContext(AuthContext);
+  const { signInUser, user, handleGoogleLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const handleSubmit = (e) => {
+    setError("");
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
+        e.target.reset();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        // console.log(err.message);
+        setError(err.message);
+        return;
       });
   };
   return (
@@ -73,6 +77,7 @@ const Login = () => {
                     Forget Password
                   </Link>
                 </p>
+                {error && <p className="text-red-600 text-start">{error}</p>}
               </div>
               {/* Submit Button */}
               <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
@@ -85,7 +90,10 @@ const Login = () => {
 
             {/* Social Login */}
             <div className="flex justify-center gap-4">
-              <Link className="btn w-full btn-neutral text-white">
+              <Link
+                onClick={handleGoogleLogin}
+                className="btn w-full btn-neutral text-white"
+              >
                 Google Login
               </Link>
             </div>

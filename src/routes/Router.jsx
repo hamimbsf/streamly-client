@@ -7,6 +7,7 @@ import Register from "../authentication/Register";
 import AddMovie from "../page/AddMovies";
 import AllMovies from "../page/AllMovies";
 import MovieDetails from "../components/content/MovieDetails";
+import PrivateRoute from "../components/Private/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,16 +29,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-movies",
-        element: <AddMovie />,
+        element: (
+          <PrivateRoute>
+            <AddMovie />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-movies",
-        element: <AllMovies />,
+        element: (
+          <PrivateRoute>
+            <AllMovies />
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:3000/all-movies"),
       },
       {
         path: "/movie/:id",
-        element: <MovieDetails />,
+        element: (
+          <PrivateRoute>
+            <MovieDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/all-movies/${params.id}`),
       },
