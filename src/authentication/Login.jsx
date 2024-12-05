@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+  const { signInUser, user } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -66,7 +75,7 @@ const Login = () => {
                 </p>
               </div>
               {/* Submit Button */}
-              <button className="btn w-full bg-red-600 hover:bg-red-500 text-white">
+              <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
                 Sign In
               </button>
             </form>

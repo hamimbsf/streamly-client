@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, manageProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
     setError("");
@@ -11,9 +13,9 @@ const Register = () => {
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const photoURL = form.photoURL.value;
+    const image = form.photoURL.value;
     const password = form.password.value;
-    console.log(name, email, photoURL, password);
+    // console.log(name, email, photoURL, password);
 
     //password validation
     if (password.length < 6) {
@@ -31,6 +33,30 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
+        //managing profile
+        manageProfile(name, image);
+        e.target.reset();
+        navigate("/");
+        //sending data to the serverside
+        const newUser = { name, image, email };
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                title: "Congrates!",
+                // text: "You clicked the button!",
+                icon: "success",
+              });
+            }
+          });
       })
       .catch((errorMessage) => {
         console.log(errorMessage);
@@ -116,12 +142,12 @@ const Register = () => {
               </div>
 
               {/* Register Button */}
-              <button className="btn w-full bg-red-600 hover:bg-red-500 text-white">
+              <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
                 Register
               </button>
             </form>
             <p>OR</p>
-            <button className="btn w-full bg-red-600 hover:bg-red-500 text-white">
+            <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
               Register by Google
             </button>
             {/* Sign In Link */}
