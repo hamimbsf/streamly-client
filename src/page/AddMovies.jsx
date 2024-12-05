@@ -9,10 +9,11 @@ const AddMovie = () => {
     const form = e.target;
     const title = form.movieTitle.value;
     const poster = form.posterLink.value;
-    const genre = form.genre.value;
+    const genre = [form.genre.value];
     const duration = form.duration.value;
     const releaseYear = form.releaseYear.value;
     const summary = form.summary.value;
+    // console.log(genre);
     if (title.length <= 2) {
       return setError("Title length should be greater than 2 characters");
     }
