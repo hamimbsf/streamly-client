@@ -50,9 +50,8 @@ const AddMovie = () => {
       },
       body: JSON.stringify(movieDetails),
     })
-      .then((res) => res.json())
+      .then((res) => res.json(e.target.reset()))
       .then((data) => {
-        console.log("Response from server:", data);
         if (data.insertedId) {
           Swal.fire({
             title: "Good job!",
@@ -68,7 +67,6 @@ const AddMovie = () => {
         }
       })
       .catch((err) => {
-        console.error("Error posting movie:", err);
         Swal.fire({
           icon: "error",
           title: "Network Error",

@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 const Movie = ({ movie }) => {
   const { title, poster, genre, duration, releaseYear, _id, numberRating } =
     movie;
   // console.log(numberRating);
+
+  const location = useLocation();
+  location.pathname === "/upcomming-movies";
   const [rating, setRating] = useState(numberRating || 0);
   const handleRating = (rate) => {
     setRating(rate);
@@ -24,9 +27,10 @@ const Movie = ({ movie }) => {
         <div className="p-4 h-[35vh] lg:h-[35vh] md:h-[20vh] flex flex-col justify-between">
           <h3 className="text-xl font-bold mb-2">{title}</h3>
           <p className="mb-1">
-            {genre?.map((category, index) => (
-              <span key={index}>Genre: {category}</span>
-            ))}
+            {genre ||
+              genre?.map((category, index) => (
+                <span key={index}>Genre: {category}</span>
+              ))}
           </p>
           <p className="mb-1">
             <strong>Duration:</strong> {duration} Minutes
@@ -38,24 +42,30 @@ const Movie = ({ movie }) => {
             <p>
               <strong>Rating:</strong> {numberRating}/5
             </p>
-            <div className="flex items-center">
-              {/* <Rating
-                onClick={handleRating}
-                initialValue={numberRating}
-                size={16}
-                allowHalfIcon 
-                style={{ display: "inline-flex", gap: "5px" }}
-                
-              /> */}
-            </div>
+            {location.pathname === "/upcomming-movies" ? (
+              ""
+            ) : (
+              <div className="">
+                <Rating
+                  onClick={handleRating}
+                  initialValue={numberRating}
+                  size={16}
+                  allowHalfIcon
+                />
+              </div>
+            )}
           </div>
           {/* See Details Button */}
-          <Link
-            to={`/movie/${_id}`}
-            className="px-4 border-none w-full py-2 btn text-white bg-red-600 transition duration-300"
-          >
-            See Details
-          </Link>
+          {location.pathname === "/upcomming-movies" ? (
+            ""
+          ) : (
+            <Link
+              to={`/movie/${_id}`}
+              className="px-4 border-none w-full py-2 btn text-white bg-red-600 transition duration-300"
+            >
+              See Details
+            </Link>
+          )}
         </div>
       </div>
     </>

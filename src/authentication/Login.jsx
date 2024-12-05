@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const { signInUser, user, handleGoogleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
     setError("");
@@ -15,6 +16,7 @@ const Login = () => {
       .then((result) => {
         // console.log(result.user);
         e.target.reset();
+        navigate("/");
       })
       .catch((err) => {
         // console.log(err.message);
