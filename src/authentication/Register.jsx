@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const handleSubmit = (e) => {
+    setError("");
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -10,6 +14,28 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const password = form.password.value;
     console.log(name, email, photoURL, password);
+
+    //password validation
+    if (password.length < 6) {
+      setError("Password length must be at least 6 characters");
+      return;
+    }
+    if (!/(?=.*[a-z])/.test(password)) {
+      setError("Password must contain at least one lowercase letter");
+      return;
+    }
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Password must contain at least one uppercase letter");
+      return;
+    }
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((errorMessage) => {
+        console.log(errorMessage);
+        setError(errorMessage);
+      });
   };
   return (
     <>
@@ -22,14 +48,14 @@ const Register = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
-          <div className="w-full max-w-md p-8 space-y-8 bg-[#00000078] rounded-lg shadow-lg">
+          <div className="w-full max-w-md p-8 space-y-3 bg-[#00000078] rounded-lg shadow-lg">
             {/* Title */}
             <h2 className="text-3xl font-bold text-center text-white">
               Register Your Account
             </h2>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {/* Name Input */}
               <div className="form-control">
                 <label className="label">
@@ -86,6 +112,7 @@ const Register = () => {
                   required
                   className="input input-bordered w-full bg-transparent text-white"
                 />
+                {error && <p>{error}</p>}
               </div>
 
               {/* Register Button */}
@@ -93,6 +120,10 @@ const Register = () => {
                 Register
               </button>
             </form>
+            <p>OR</p>
+            <button className="btn w-full bg-red-600 hover:bg-red-500 text-white">
+              Register by Google
+            </button>
             {/* Sign In Link */}
             <p className="text-sm text-center text-gray-400">
               If you have already an account?{" "}
