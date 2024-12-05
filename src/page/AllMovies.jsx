@@ -3,7 +3,7 @@ import Movie from "../components/content/Movie";
 
 const AllMovies = () => {
   const movies = useLoaderData();
-  console.log(movies);
+  // console.log(movies);
 
   //   console.log(movies);
 
