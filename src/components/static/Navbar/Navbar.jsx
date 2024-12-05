@@ -47,7 +47,7 @@ export const Navbar = () => {
   };
   return (
     <>
-      <div className="navbar text-white relative z-[99]">
+      <div className="navbar text-white relative z-[99] px-[5%]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -73,9 +73,9 @@ export const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-3xl text-white font-extrabold">
+          <Link to="/" className="text-3xl text-white font-extrabold">
             STREAMLY
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>

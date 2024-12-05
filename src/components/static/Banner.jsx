@@ -8,7 +8,7 @@ const Banner = () => {
         <div className="carousel absolute top-0 text-white w-full h-[100vh]">
           <div id="slide4" className="carousel-item relative w-full">
             <img
-              src="https://i.ibb.co.com/9HMFCqB/MLP-ROW-Muti-title-Mag1-CB1564087979.jpg"
+              src="https://i.ibb.co.com/Pxw6gs9/59514054-2004-4425-8c72-cc6a5c0f8f48.jpg"
               className="w-full object-cover"
             />
             <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
@@ -55,7 +55,7 @@ const Banner = () => {
           </div>
           <div id="slide1" className="carousel-item relative w-full">
             <img
-              src="https://i.ibb.co.com/VNk0gDB/330744315-716972846472643-4555137785825918072-n.jpg"
+              src="https://i.ibb.co.com/9HMFCqB/MLP-ROW-Muti-title-Mag1-CB1564087979.jpg"
               className="w-full object-cover"
             />
             <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
@@ -85,7 +85,7 @@ const Banner = () => {
           </div>
           <div id="slide2" className="carousel-item relative w-full">
             <img
-              src="https://i.ibb.co.com/jJszm9s/BD-en-20241125-TRIFECTA-658e7f25-278b-487a-b0b6-d0a41dcfbf34-large.jpg"
+              src="https://i.ibb.co.com/mcq17JJ/213228c5-3690-48fb-84a7-8dd248d993f5.jpg"
               className="w-full object-cover"
             />
             <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">

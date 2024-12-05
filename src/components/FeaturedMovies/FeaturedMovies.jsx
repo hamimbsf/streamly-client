@@ -13,7 +13,7 @@ const FeaturedMovies = () => {
   }, []);
   return (
     <>
-      <div className="grid grid-cols-3 gap-4 container mx-auto mt-16">
+      <div className="grid md:grid-cols-3 px-4 md:px-0 gap-4 container mx-auto mt-16">
         {movies.map((movie) => (
           <Movie key={movie._id} movie={movie} />
         ))}
