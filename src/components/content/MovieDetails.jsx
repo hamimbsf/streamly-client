@@ -32,7 +32,7 @@ const MovieDetails = () => {
             text: "Your file has been deleted.",
             icon: "success",
           });
-          fetch(`http://localhost:3000/all-movies/${id}`, {
+          fetch(`https://streamly-puce.vercel.app/all-movies/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

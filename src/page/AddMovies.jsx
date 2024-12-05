@@ -10,6 +10,8 @@ const AddMovie = () => {
     const title = form.movieTitle.value;
     const poster = form.posterLink.value;
     const genre = [form.genre.value];
+    const rating = form.rating.value;
+    const numberRating = parseInt(rating);
     const duration = form.duration.value;
     const releaseYear = form.releaseYear.value;
     const summary = form.summary.value;
@@ -23,6 +25,10 @@ const AddMovie = () => {
     if (summary.length <= 10) {
       return setError("Summary length should be greater than 10 characters");
     }
+    if (isNaN(numberRating) || numberRating < 1 || numberRating > 5) {
+      setError("Please enter a rating between 1 and 5.");
+      return;
+    }
 
     // If all validations pass, proceed to post the movie details
     const movieDetails = {
@@ -30,13 +36,14 @@ const AddMovie = () => {
       poster,
       genre,
       duration,
+      numberRating,
       releaseYear,
       summary,
     };
 
     console.log("Posting movie details:", movieDetails);
 
-    fetch("http://localhost:3000/all-movies", {
+    fetch("https://streamly-puce.vercel.app/all-movies", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,10 +87,10 @@ const AddMovie = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="md:w-[30vw] w-[90vw] mt-12 mx-auto bg-[#00000078] text-white p-4 rounded shadow-lg">
-          <h1 className="text-xl font-bold mb-4">Add Movie</h1>
+          <h1 className="text-xl font-bold mb-2">Add Movie</h1>
           <form onSubmit={handleAddMovies}>
             {/* Movie Poster */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">
                 Movie Poster (Image Link)
               </label>
@@ -96,7 +103,7 @@ const AddMovie = () => {
             </div>
 
             {/* Movie Title */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">Movie Title</label>
               <input
                 type="text"
@@ -107,7 +114,7 @@ const AddMovie = () => {
             </div>
 
             {/* Genre */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">Genre</label>
               <select className="bg-transparent py-4" name="genre">
                 <option value="">Select Genre</option>
@@ -121,7 +128,7 @@ const AddMovie = () => {
             </div>
 
             {/* Duration */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">
                 Duration (in minutes)
               </label>
@@ -133,7 +140,7 @@ const AddMovie = () => {
             </div>
 
             {/* Release Year */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">Release Year</label>
               <select
                 name="releaseYear"
@@ -149,12 +156,17 @@ const AddMovie = () => {
             </div>
 
             {/* Rating */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">Rating</label>
+              <input
+                type="number"
+                name="rating"
+                className="w-full p-2 bg-transparent border-neutral border rounded"
+              />
             </div>
 
             {/* Summary */}
-            <div className="mb-4">
+            <div className="mb-2">
               <label className="block text-sm font-medium">Summary</label>
               <textarea
                 name="summary"

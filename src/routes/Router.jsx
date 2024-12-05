@@ -30,7 +30,8 @@ const router = createBrowserRouter([
       {
         path: "/upcomming-movies",
         element: <UpcommingMovies />,
-        loader: () => fetch("http://localhost:3000/upcomming-movies"),
+        loader: () =>
+          fetch("https://streamly-puce.vercel.app/upcomming-movies"),
       },
       {
         path: "/add-movies",
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
             <AllMovies />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/all-movies"),
+        loader: () => fetch("https://streamly-puce.vercel.app/all-movies"),
       },
       {
         path: "/movie/:id",
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/all-movies/${params.id}`),
+          fetch(`https://streamly-puce.vercel.app/all-movies/${params.id}`),
       },
     ],
   },

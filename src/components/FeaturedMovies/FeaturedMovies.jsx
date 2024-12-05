@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FeaturedMovies = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/limited-movies")
+    fetch("https://streamly-puce.vercel.app/limited-movies")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

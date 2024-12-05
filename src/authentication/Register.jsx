@@ -39,7 +39,7 @@ const Register = () => {
         navigate("/");
         //sending data to the serverside
         const newUser = { name, image, email };
-        fetch("http://localhost:3000/users", {
+        fetch("https://streamly-puce.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

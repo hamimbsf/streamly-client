@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 
 const Movie = ({ movie }) => {
-  const { title, poster, genre, duration, releaseYear, summary, _id } = movie;
-  // console.log(genre);
-
+  const { title, poster, genre, duration, releaseYear, _id, numberRating } =
+    movie;
+  // console.log(numberRating);
+  const [rating, setRating] = useState(numberRating || 0);
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
   const navigate = useNavigate();
   return (
     <>
@@ -28,9 +34,21 @@ const Movie = ({ movie }) => {
           <p className="mb-1">
             <strong>Release Year:</strong> {releaseYear}
           </p>
-          <p className="mb-4">
-            <strong>Rating:</strong>/10
-          </p>
+          <div className="mb-4">
+            <p>
+              <strong>Rating:</strong> {numberRating}/5
+            </p>
+            <div className="flex items-center">
+              {/* <Rating
+                onClick={handleRating}
+                initialValue={numberRating}
+                size={16}
+                allowHalfIcon 
+                style={{ display: "inline-flex", gap: "5px" }}
+                
+              /> */}
+            </div>
+          </div>
           {/* See Details Button */}
           <Link
             to={`/movie/${_id}`}
