@@ -1,7 +1,10 @@
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddMovie = () => {
+  const [error, setError] = useState("");
   const handleAddMovies = (e) => {
+    setError("");
     e.preventDefault();
     const form = e.target;
     const title = form.movieTitle.value;
@@ -10,6 +13,17 @@ const AddMovie = () => {
     const duration = form.duration.value;
     const releaseYear = form.releaseYear.value;
     const summary = form.summary.value;
+    if (title.length <= 2) {
+      return setError("Title length should be greater than 2 characters");
+    }
+    if (duration < 60) {
+      return setError("Duration should be at least 60 minutes");
+    }
+    if (summary.length <= 10) {
+      return setError("Summary length should be greater than 10 characters");
+    }
+
+    // If all validations pass, proceed to post the movie details
     const movieDetails = {
       title,
       poster,
@@ -18,22 +32,23 @@ const AddMovie = () => {
       releaseYear,
       summary,
     };
-    /* posted data to backend */
-    console.log(movieDetails);
+
+    console.log("Posting movie details:", movieDetails);
+
     fetch("http://localhost:3000/all-movies", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(movieDetails),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log("Response from server:", data);
         if (data.insertedId) {
           Swal.fire({
             title: "Good job!",
-            text: "Successfully you added the movie!",
+            text: "Successfully added the movie!",
             icon: "success",
           });
         } else {
@@ -43,6 +58,14 @@ const AddMovie = () => {
             text: "Something went wrong!",
           });
         }
+      })
+      .catch((err) => {
+        console.error("Error posting movie:", err);
+        Swal.fire({
+          icon: "error",
+          title: "Network Error",
+          text: "Failed to connect to the server. Please try again.",
+        });
       });
   };
   return (
@@ -139,7 +162,7 @@ const AddMovie = () => {
                 rows="4"
               />
             </div>
-
+            {error && <p>{error}</p>}
             <button
               type="submit"
               className="w-full btn text-white bg-red-600 hover:bg-red-500"

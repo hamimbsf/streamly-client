@@ -8,6 +8,7 @@ import AddMovie from "../page/AddMovies";
 import AllMovies from "../page/AllMovies";
 import MovieDetails from "../components/content/MovieDetails";
 import PrivateRoute from "../components/Private/PrivateRoute";
+import UpcommingMovies from "../page/UpcommingMovies";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +18,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        // loader: () => fetch("http://localhost:3000/all-movies"),
       },
       {
         path: "/login",
@@ -26,6 +26,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/upcomming-movies",
+        element: <UpcommingMovies />,
+        loader: () => fetch("http://localhost:3000/upcomming-movies"),
       },
       {
         path: "/add-movies",

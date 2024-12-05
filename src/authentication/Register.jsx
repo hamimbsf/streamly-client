@@ -58,9 +58,8 @@ const Register = () => {
             }
           });
       })
-      .catch((errorMessage) => {
-        console.log(errorMessage);
-        setError(errorMessage);
+      .catch((error) => {
+        return setError(error.message);
       });
   };
   return (
@@ -145,11 +144,12 @@ const Register = () => {
               <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
                 Register
               </button>
+              {error && <p className="text-red-600">{error}</p>}
             </form>
-            <p>OR</p>
+            {/* <p>OR</p>
             <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
               Register by Google
-            </button>
+            </button> */}
             {/* Sign In Link */}
             <p className="text-sm text-center text-gray-400">
               If you have already an account?{" "}

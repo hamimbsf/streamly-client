@@ -27,7 +27,7 @@ export const Navbar = () => {
         </li>
       )}
       <li>
-        <NavLink to="*">Upcomming Movie</NavLink>
+        <NavLink to="/upcomming-movies">Upcomming Movie</NavLink>
       </li>
     </>
   );
