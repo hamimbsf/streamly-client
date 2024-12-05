@@ -9,6 +9,7 @@ import AllMovies from "../page/AllMovies";
 import MovieDetails from "../components/content/MovieDetails";
 import PrivateRoute from "../components/Private/PrivateRoute";
 import UpcommingMovies from "../page/UpcommingMovies";
+import ForgetPass from "../authentication/ForgetPass";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPass />,
       },
       {
         path: "/upcomming-movies",

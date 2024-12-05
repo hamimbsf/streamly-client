@@ -5,8 +5,6 @@ import { Rating } from "react-simple-star-rating";
 const Movie = ({ movie }) => {
   const { title, poster, genre, duration, releaseYear, _id, numberRating } =
     movie;
-  // console.log(numberRating);
-
   const location = useLocation();
   location.pathname === "/upcomming-movies";
   const [rating, setRating] = useState(numberRating || 0);

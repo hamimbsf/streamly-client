@@ -31,7 +31,6 @@ export const Navbar = () => {
       </li>
     </>
   );
-  // console.log(user);
   const image = (
     <img
       className="rounded-full w-10"

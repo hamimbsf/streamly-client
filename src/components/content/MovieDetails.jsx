@@ -7,7 +7,6 @@ const MovieDetails = () => {
     singleMovie;
   const navigate = useNavigate();
   const handleDelete = (id) => {
-    // console.log(id);
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -37,7 +36,6 @@ const MovieDetails = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
               if (data.deletedCount) {
                 navigate("/all-movies");
               }

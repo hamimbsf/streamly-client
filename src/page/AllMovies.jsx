@@ -3,10 +3,6 @@ import Movie from "../components/content/Movie";
 
 const AllMovies = () => {
   const movies = useLoaderData();
-  // console.log(movies);
-
-  //   console.log(movies);
-
   return (
     <div>
       <div className="grid md:grid-cols-3 container mx-auto my-10 grid-cols-1 gap-4">

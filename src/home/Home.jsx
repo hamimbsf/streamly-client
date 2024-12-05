@@ -7,8 +7,6 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Home = () => {
-  // const movies = useLoaderData();
-  // console.log(movies);
   const { user } = useContext(AuthContext);
   return (
     <div className="">

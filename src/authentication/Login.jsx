@@ -14,12 +14,10 @@ const Login = () => {
     const password = form.password.value;
     signInUser(email, password)
       .then((result) => {
-        // console.log(result.user);
         e.target.reset();
         navigate("/");
       })
       .catch((err) => {
-        // console.log(err.message);
         setError(err.message);
         return;
       });
@@ -73,7 +71,7 @@ const Login = () => {
                 />
                 <p className="text-start my-2">
                   <Link
-                    href="/register"
+                    to="/forget-password"
                     className="text-white text-sm hover:underline"
                   >
                     Forget Password

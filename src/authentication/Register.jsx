@@ -15,7 +15,6 @@ const Register = () => {
     const email = form.email.value;
     const image = form.photoURL.value;
     const password = form.password.value;
-    // console.log(name, email, photoURL, password);
 
     //password validation
     if (password.length < 6) {
@@ -32,7 +31,6 @@ const Register = () => {
     }
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
         //managing profile
         manageProfile(name, image);
         e.target.reset();
@@ -48,7 +46,6 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data);
             if (data.insertedId) {
               Swal.fire({
                 title: "Congrates!",

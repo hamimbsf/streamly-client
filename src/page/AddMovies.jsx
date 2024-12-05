@@ -15,7 +15,6 @@ const AddMovie = () => {
     const duration = form.duration.value;
     const releaseYear = form.releaseYear.value;
     const summary = form.summary.value;
-    // console.log(genre);
     if (title.length <= 2) {
       return setError("Title length should be greater than 2 characters");
     }
@@ -40,8 +39,6 @@ const AddMovie = () => {
       releaseYear,
       summary,
     };
-
-    console.log("Posting movie details:", movieDetails);
 
     fetch("https://streamly-puce.vercel.app/all-movies", {
       method: "POST",

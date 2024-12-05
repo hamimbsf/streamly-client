@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -33,6 +34,10 @@ const AuthProvider = ({ children }) => {
   const handleGoogleLogin = () => {
     return signInWithPopup(auth, googleProvider);
   };
+  //reset passcode
+  const handleResetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
 
   //manage profile
   const manageProfile = (name, image) => {
@@ -48,6 +53,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     logOut,
     manageProfile,
+    handleResetPassword,
     handleGoogleLogin,
   };
   useEffect(() => {
