@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Movie from "../components/content/Movie";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const FavouriteMovie = () => {
   const [movies, setMovies] = useState([]);

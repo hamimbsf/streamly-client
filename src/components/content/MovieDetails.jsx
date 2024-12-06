@@ -86,10 +86,15 @@ const MovieDetails = () => {
       });
       const result = await res.json();
       if (result?.message) {
-        console.log(result.message);
+        // console.log(result.message);
+        Swal.fire({
+          // title: "Congrats",
+          text: "Added to your favourite movie section!",
+          icon: "success",
+        });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   return (
