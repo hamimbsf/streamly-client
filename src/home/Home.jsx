@@ -14,21 +14,21 @@ const Home = () => {
       {user ? (
         <p></p>
       ) : (
-        <div className="space-y-4 text-white my-5">
-          <p className="text-center text-white">
+        <div className="space-y-4 my-5">
+          <p className="text-center">
             Ready to watch? create an account or login.
           </p>
           <div className="flex items-center justify-center gap-3">
             <Link
               to="/login"
-              className="bg-red-600 rounded-full px-10 text-white btn btn-md transition-all duration-300"
+              className="bg-red-600 rounded-full px-10 btn btn-md transition-all duration-300"
             >
               Login
             </Link>
             <p>or</p>
             <Link
               to="/register"
-              className="btn btn-md rounded-full px-10 text-white transition-all duration-300"
+              className="btn btn-md btn-neutral rounded-full px-10 transition-all duration-300"
             >
               Register
             </Link>

@@ -1,7 +1,7 @@
 const Answer = () => {
   return (
     <>
-      <div className="my-6 px-4 md:px-0 container mx-auto space-y-4 text-white">
+      <div className="my-6 px-4 md:px-0 container mx-auto space-y-4 ">
         <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
         <details className="collapse bg-base-200">
           <summary className="collapse-title text-xl font-medium">

@@ -57,11 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-movies",
-        element: (
-          <PrivateRoute>
-            <AllMovies />
-          </PrivateRoute>
-        ),
+        element: <AllMovies />,
         loader: () => fetch("https://streamly-puce.vercel.app/all-movies"),
       },
       {

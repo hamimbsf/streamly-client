@@ -15,7 +15,7 @@ const Movie = ({ movie, isBtn, handleDelteFavorite }) => {
 
   return (
     <>
-      <div className="bg-transparent text-white rounded-lg overflow-hidden hover:scale-105 duration-500">
+      <div className="bg-transparent rounded-lg overflow-hidden hover:scale-105 duration-500">
         {/* Movie Poster */}
         <img
           src={poster}
@@ -67,7 +67,7 @@ const Movie = ({ movie, isBtn, handleDelteFavorite }) => {
           ) : (
             <Link
               to={`/movie/${_id}`}
-              className="px-4 border-none w-full py-2 btn text-white bg-red-600 transition duration-300"
+              className="px-4 border-none w-full py-2 btn  bg-red-600 transition duration-300"
             >
               See Details
             </Link>

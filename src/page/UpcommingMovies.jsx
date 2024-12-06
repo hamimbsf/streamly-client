@@ -5,7 +5,7 @@ const UpcommingMovies = () => {
   const movies = useLoaderData();
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 container mx-auto my-8 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 container mx-auto px-4 md:px-0 my-8 gap-4">
         {movies.map((movie) => (
           <Movie key={movie._id} movie={movie} />
         ))}

@@ -22,7 +22,7 @@ const FeaturedMovies = () => {
         ))}
       </div>
       <div className="flex justify-center mt-10 mb-14">
-        <Link to="/all-movies" className="btn text-white w-[30%] bg-red-600">
+        <Link to="/all-movies" className="btn w-[30%] bg-red-600">
           All Movies
         </Link>
       </div>
