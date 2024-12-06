@@ -7,7 +7,6 @@ export const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-  // Apply the theme to the document
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme); // Save theme preference
@@ -59,7 +58,7 @@ export const Navbar = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   };
 
@@ -103,7 +102,7 @@ export const Navbar = () => {
           />
           {/* Sun Icon */}
           <svg
-            className="swap-on fill-current w-8 h-8"
+            className="swap-on text-orange-500 fill-current w-8 h-8"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
