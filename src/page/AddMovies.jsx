@@ -81,7 +81,7 @@ const AddMovie = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="md:w-[30vw] w-[90vw] mt-12 mx-auto bg-[#00000078] text-white p-4 rounded shadow-lg">
+        <div className="md:w-[30vw] w-[90vw] mt-16 mx-auto bg-[#00000078] text-white p-4 rounded shadow-lg">
           <h1 className="text-xl font-bold mb-2">Add Movie</h1>
           <form onSubmit={handleAddMovies}>
             {/* Movie Poster */}

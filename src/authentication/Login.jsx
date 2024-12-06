@@ -33,7 +33,7 @@ const Login = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
-          <div className="w-full max-w-md p-8 space-y-8 bg-[#00000078] rounded-lg shadow-lg">
+          <div className="w-full max-w-md p-8 mt-14 space-y-8 bg-[#00000078] rounded-lg shadow-lg">
             {/* Title */}
             <h2 className="text-3xl font-bold text-center text-white">
               Sign In to Your Account
