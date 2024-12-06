@@ -8,7 +8,10 @@ const FeaturedMovies = () => {
     fetch("https://streamly-puce.vercel.app/limited-movies")
       .then((res) => res.json())
       .then((data) => {
-        setMovies(data);
+        const sortedMovies = data.sort(
+          (a, b) => b.numberRating - a.numberRating
+        );
+        setMovies(sortedMovies);
       });
   }, []);
   return (

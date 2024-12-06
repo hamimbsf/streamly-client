@@ -55,7 +55,7 @@ const Banner = () => {
           </div>
           <div id="slide1" className="carousel-item relative w-full">
             <img
-              src="https://i.ibb.co.com/9HMFCqB/MLP-ROW-Muti-title-Mag1-CB1564087979.jpg"
+              src="https://i.ibb.co.com/C6BmdYg/34f24458-1135-482d-9940-6dcb62472af4.jpg"
               className="w-full object-cover"
             />
             <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
@@ -115,7 +115,7 @@ const Banner = () => {
           </div>
           <div id="slide3" className="carousel-item relative w-full">
             <img
-              src="https://i.ibb.co.com/jJszm9s/BD-en-20241125-TRIFECTA-658e7f25-278b-487a-b0b6-d0a41dcfbf34-large.jpg"
+              src="https://i.ibb.co.com/jLKkDMZ/Netflix-Games.png"
               className="w-full object-cover"
             />
             <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
