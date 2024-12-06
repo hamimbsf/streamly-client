@@ -5,3 +5,6 @@
 svg.star-svg {
   display: inline;
 }
+#root {
+  background-color: black;
+}

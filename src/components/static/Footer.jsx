@@ -2,9 +2,10 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="footer bg-neutral text-neutral-content p-10">
+    <footer className="footer border-t border-white container mx-auto text-white mt-10 py-10 px-4 md:px-0">
+      {/* <div className="divider text"></div> */}
       <aside>
-        <h1 className="text-4xl font-bold my-5">Streamly</h1>
+        <h1 className="text-4xl font-bold mb-5">Streamly</h1>
         <p>
           <span className="text-lg font-semibold">
             A movie streaming platform

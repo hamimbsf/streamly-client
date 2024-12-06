@@ -24,7 +24,7 @@ export const Navbar = () => {
       )}
       {user && (
         <li>
-          <NavLink to="*">My Favorites</NavLink>
+          <NavLink to="/favourite-movies">My Favorites</NavLink>
         </li>
       )}
       <li>

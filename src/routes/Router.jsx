@@ -10,6 +10,7 @@ import MovieDetails from "../components/content/MovieDetails";
 import PrivateRoute from "../components/Private/PrivateRoute";
 import UpcommingMovies from "../page/UpcommingMovies";
 import ForgetPass from "../authentication/ForgetPass";
+import FavouriteMovie from "../page/FavouriteMovie";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPass />,
+      },
+      {
+        path: "/favourite-movies",
+        element: <FavouriteMovie />,
       },
       {
         path: "/upcomming-movies",
