@@ -1,16 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../home/Home";
-import ErrorPage from "../page/ErrorPage";
+import ForgetPass from "../authentication/ForgetPass";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
-import AddMovie from "../page/AddMovies";
-import AllMovies from "../page/AllMovies";
 import MovieDetails from "../components/content/MovieDetails";
 import PrivateRoute from "../components/Private/PrivateRoute";
-import UpcommingMovies from "../page/UpcommingMovies";
-import ForgetPass from "../authentication/ForgetPass";
+import Home from "../home/Home";
+import AddMovie from "../page/AddMovies";
+import AllMovies from "../page/AllMovies";
+import ErrorPage from "../page/ErrorPage";
 import FavouriteMovie from "../page/FavouriteMovie";
+import UpcommingMovies from "../page/UpcommingMovies";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/favourite-movies",
-        element: <FavouriteMovie />,
+        element: (
+          <PrivateRoute>
+            <FavouriteMovie />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/upcomming-movies",

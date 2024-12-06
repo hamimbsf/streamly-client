@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, isBtn, handleDelteFavorite }) => {
   const { title, poster, genre, duration, releaseYear, _id, numberRating } =
     movie;
   const location = useLocation();
@@ -12,6 +12,7 @@ const Movie = ({ movie }) => {
     setRating(rate);
   };
   const navigate = useNavigate();
+
   return (
     <>
       <div className="bg-transparent text-white rounded-lg overflow-hidden hover:scale-105 duration-500">
@@ -54,7 +55,14 @@ const Movie = ({ movie }) => {
             )}
           </div>
           {/* See Details Button */}
-          {location.pathname === "/upcomming-movies" ? (
+          {isBtn ? (
+            <button
+              onClick={() => handleDelteFavorite(_id)}
+              className="px-4 border-none w-full py-2 btn text-white bg-red-600 transition duration-300"
+            >
+              Delete Favorite
+            </button>
+          ) : location.pathname === "/upcomming-movies" ? (
             ""
           ) : (
             <Link

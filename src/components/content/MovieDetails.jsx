@@ -1,11 +1,23 @@
-import { data, useLoaderData, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MovieDetails = () => {
+  const { user } = useContext(AuthContext);
   const singleMovie = useLoaderData();
-  const { title, poster, genre, duration, releaseYear, summary, _id } =
-    singleMovie;
+  const {
+    title,
+    poster,
+    genre,
+    duration,
+    releaseYear,
+    summary,
+    _id,
+    numberRating,
+  } = singleMovie;
   const navigate = useNavigate();
+
   const handleDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -14,6 +26,8 @@ const MovieDetails = () => {
       },
       buttonsStyling: false,
     });
+
+    // alert
     swalWithBootstrapButtons
       .fire({
         title: "Are you sure?",
@@ -52,6 +66,32 @@ const MovieDetails = () => {
         }
       });
   };
+
+  // handle add favorite
+  const handleAddFavorite = async () => {
+    const favorite = {
+      userEmail: user.email,
+      title,
+      poster,
+      genre,
+      duration,
+      releaseYear,
+      numberRating,
+    };
+    try {
+      const res = await fetch("https://streamly-puce.vercel.app/favorites", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(favorite),
+      });
+      const result = await res.json();
+      if (result?.message) {
+        console.log(result.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="bg-transparent container mx-auto my-8 text-white rounded-lg overflow-hidden">
@@ -85,7 +125,10 @@ const MovieDetails = () => {
             >
               Delete Movie
             </button>
-            <button className="btn w-[50%] bg-red-600 text-white hover:bg-red-500">
+            <button
+              onClick={handleAddFavorite}
+              className="btn w-[50%] bg-red-600 text-white hover:bg-red-500"
+            >
               Add to Favorite
             </button>
           </div>

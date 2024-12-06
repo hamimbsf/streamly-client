@@ -115,7 +115,7 @@ const Banner = () => {
           </div>
           <div id="slide3" className="carousel-item relative w-full">
             <img
-              src="https://i.ibb.co.com/jLKkDMZ/Netflix-Games.png"
+              src="https://i.ibb.co.com/23nn1x3/rob-laughter-WW1js-In-Xgw-M-unsplash.jpg"
               className="w-full object-cover"
             />
             <div className="absolute left-20 right-5 top-[55%] flex -translate-y-1/2 transform">
