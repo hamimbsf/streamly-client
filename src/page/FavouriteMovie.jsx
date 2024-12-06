@@ -37,7 +37,7 @@ const FavouriteMovie = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4 p-4">
+    <div className="grid container mx-auto grid-cols-1 md:grid-cols-3 gap-4 my-8 p-4 md:p-0">
       {movies.map((movie) => (
         <Movie
           key={movie._id}
