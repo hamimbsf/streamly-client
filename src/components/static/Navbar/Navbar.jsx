@@ -21,11 +21,9 @@ export const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      {user && (
-        <li>
-          <NavLink to="/all-movies">All Movies</NavLink>
-        </li>
-      )}
+      <li>
+        <NavLink to="/all-movies">All Movies</NavLink>
+      </li>
       {user && (
         <li>
           <NavLink to="/add-movies">Add Movies</NavLink>

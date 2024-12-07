@@ -1,21 +1,27 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { useForm } from "react-hook-form";
 
 const ForgetPass = () => {
   const { handleResetPassword } = useContext(AuthContext);
   const [message, setMessage] = useState("");
-  const handleReset = (e) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = ({ email }) => {
     setMessage("");
-    e.preventDefault();
-    const email = e.target.email.value;
     handleResetPassword(email)
-      .then((res) => {
+      .then(() => {
         setMessage("Check your email");
       })
-      .catch((error) => {
+      .catch(() => {
         setMessage("Register your email");
       });
   };
+
   return (
     <>
       <div
@@ -34,7 +40,7 @@ const ForgetPass = () => {
             </h2>
 
             {/* Form */}
-            <form onSubmit={handleReset} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Email Input */}
               <div className="form-control">
                 <label className="label">
@@ -44,13 +50,22 @@ const ForgetPass = () => {
                 </label>
                 <input
                   type="email"
-                  name="email"
                   placeholder="Email"
                   className="input input-bordered w-full bg-transparent text-white"
-                  required
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Invalid email format",
+                    },
+                  })}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                )}
               </div>
               {message && <p className="text-red-500">{message}</p>}
+
               {/* Submit Button */}
               <button className="btn w-full border-none bg-red-600 hover:bg-red-500 text-white">
                 Reset Password

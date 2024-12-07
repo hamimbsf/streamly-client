@@ -6,6 +6,16 @@ const Login = () => {
   const { signInUser, user, handleGoogleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const googleLogin = () => {
+    handleGoogleLogin()
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Google Login Failed:", error);
+      });
+  };
+
   const handleSubmit = (e) => {
     setError("");
     e.preventDefault();
@@ -52,7 +62,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  className="input input-bordered w-full bg-transparent text-white"
+                  className="input border-none w-full bg-transparent text-white"
                   required
                 />
               </div>
@@ -66,7 +76,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
-                  className="input input-bordered w-full bg-transparent text-white"
+                  className="input border-none w-full bg-transparent text-white"
                   required
                 />
                 <p className="text-start my-2">
@@ -91,7 +101,7 @@ const Login = () => {
             {/* Social Login */}
             <div className="flex justify-center gap-4">
               <Link
-                onClick={handleGoogleLogin}
+                onClick={googleLogin}
                 className="btn w-full btn-neutral text-white"
               >
                 Google Login

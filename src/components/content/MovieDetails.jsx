@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 
@@ -27,7 +27,6 @@ const MovieDetails = () => {
       buttonsStyling: false,
     });
 
-    // alert
     swalWithBootstrapButtons
       .fire({
         title: "Are you sure?",
@@ -99,7 +98,7 @@ const MovieDetails = () => {
   };
   return (
     <>
-      <div className="bg-transparent container mx-auto my-8 text-white rounded-lg overflow-hidden">
+      <div className="bg-transparent container mx-auto my-8  rounded-lg overflow-hidden">
         {/* Movie Poster */}
         <img
           src={poster}
@@ -123,16 +122,22 @@ const MovieDetails = () => {
           </p>
           <p className="mb-4">{summary}</p>
           {/* See Details Button */}
-          <div className="flex justify-between gap-4">
+          <div className="md:flex justify-between gap-4">
             <button
               onClick={() => handleDelete(_id)}
-              className="btn w-[50%] bg-red-600 text-white hover:bg-red-500"
+              className="btn md:w-[30%] text-white bg-red-600  hover:bg-red-500"
             >
               Delete Movie
             </button>
+            <Link
+              to={`/update/${_id}`}
+              className="btn md:w-[30%] text-white bg-red-600  hover:bg-red-500"
+            >
+              Update Movie
+            </Link>
             <button
               onClick={handleAddFavorite}
-              className="btn w-[50%] bg-red-600 text-white hover:bg-red-500"
+              className="btn md:w-[30%] text-white bg-red-600  hover:bg-red-500"
             >
               Add to Favorite
             </button>
