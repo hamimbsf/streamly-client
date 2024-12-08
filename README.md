@@ -35,7 +35,7 @@ Your technology stack is well-structured and modern! Here's a polished version f
 
 ## Database
 
-## MongoDB: As the NoSQL database for storing and managing application data.
+### MongoDB: As the NoSQL database for storing and managing application data.
 
 ## Authentication
 

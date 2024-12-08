@@ -25,7 +25,7 @@ const AllMovies = () => {
           className="input input-bordered w-24 md:w-auto"
         />
       </div>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+      <div className="grid px-4 md:px-0 md:grid-cols-3 grid-cols-1 gap-4">
         {allMovies.length === 0 ? (
           <p> </p>
         ) : (
