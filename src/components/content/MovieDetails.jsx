@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MovieDetails = () => {
   const { user } = useContext(AuthContext);
@@ -98,6 +99,9 @@ const MovieDetails = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Streamly || {title}</title>
+      </Helmet>
       <div className="bg-transparent container mx-auto my-8  rounded-lg overflow-hidden">
         {/* Movie Poster */}
         <img

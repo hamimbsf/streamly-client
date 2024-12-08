@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
 const AddMovie = () => {
@@ -73,6 +74,9 @@ const AddMovie = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Streamly || Add Movies</title>
+      </Helmet>
       <div
         className="hero absolute top-0 min-h-screen"
         style={{

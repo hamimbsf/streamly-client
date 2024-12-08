@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser, manageProfile } = useContext(AuthContext);
@@ -61,6 +62,9 @@ const Register = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Streamly || Register</title>
+      </Helmet>
       <div
         className="hero absolute top-0 min-h-screen"
         style={{

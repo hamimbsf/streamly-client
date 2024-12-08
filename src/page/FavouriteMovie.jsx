@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Movie from "../components/content/Movie";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const FavouriteMovie = () => {
   const [movies, setMovies] = useState([]);
@@ -38,16 +39,21 @@ const FavouriteMovie = () => {
   };
 
   return (
-    <div className="grid container mx-auto grid-cols-1 md:grid-cols-3 gap-4 my-8 p-4 md:p-0">
-      {movies.map((movie) => (
-        <Movie
-          key={movie._id}
-          movie={movie}
-          isBtn={true}
-          handleDelteFavorite={handleDelteFavorite}
-        ></Movie>
-      ))}
-    </div>
+    <>
+      <Helmet>
+        <title>Streamly || Favourite Movies</title>
+      </Helmet>
+      <div className="grid container mx-auto grid-cols-1 md:grid-cols-3 gap-4 my-8 p-4 md:p-0">
+        {movies.map((movie) => (
+          <Movie
+            key={movie._id}
+            movie={movie}
+            isBtn={true}
+            handleDelteFavorite={handleDelteFavorite}
+          ></Movie>
+        ))}
+      </div>
+    </>
   );
 };
 

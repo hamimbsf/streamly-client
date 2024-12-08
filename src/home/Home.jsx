@@ -5,11 +5,15 @@ import Answer from "../components/static/ExtraSection/Answer";
 import SpecialFeatures from "../components/static/ExtraSection/SpecialFeatures";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
   return (
     <div className="">
+      <Helmet>
+        <title>Streamly || Home</title>
+      </Helmet>
       <Banner />
       {user ? (
         <p></p>

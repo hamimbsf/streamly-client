@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 const ForgetPass = () => {
   const { handleResetPassword } = useContext(AuthContext);
@@ -24,6 +25,9 @@ const ForgetPass = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Streamly || Forget Password</title>
+      </Helmet>
       <div
         className="hero absolute top-0 min-h-screen"
         style={{
