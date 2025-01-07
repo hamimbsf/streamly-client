@@ -6,6 +6,7 @@ import SpecialFeatures from "../components/static/ExtraSection/SpecialFeatures";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import Testimonial from "../components/static/ExtraSection/Testimonial";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -41,6 +42,7 @@ const Home = () => {
       )}
 
       <FeaturedMovies />
+      <Testimonial />
       <SpecialFeatures />
       <Answer />
     </div>

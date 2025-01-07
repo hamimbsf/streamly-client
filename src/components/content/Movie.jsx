@@ -25,8 +25,8 @@ const Movie = ({ movie, isBtn, handleDelteFavorite }) => {
           className="w-full h-48 object-center object-cover"
         />
         {/* Movie Info */}
-        <div className="p-4 h-[35vh] lg:h-[35vh] md:h-[25vh] flex flex-col justify-between">
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <div className="p-4 h-[35vh] lg:h-[40vh] md:h-[25vh] flex flex-col justify-between">
+          <h3 className="text-lg font-semibold mb-2">{title}</h3>
           <p className="mb-1">
             {genre ||
               genre?.map((category, index) => (

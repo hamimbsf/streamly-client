@@ -6,7 +6,7 @@ const AboutUs = () => {
       <Helmet>
         <title>Streamly || About Us</title>
       </Helmet>
-      <div className="container mx-auto my-16 space-y-4">
+      <div className="container mx-auto my-16 space-y-4 px-4 md:px-0">
         <h1 className="text-4xl font-bold">About Us</h1>
         <p>
           Welcome to Streamly, your ultimate destination for everything movies!
