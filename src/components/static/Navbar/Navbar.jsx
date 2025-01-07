@@ -6,15 +6,24 @@ import { RiMenu2Line } from "react-icons/ri";
 export const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [isDark, setIsDark] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme); // Save theme preference
-  }, [theme]);
+    const html = document.documentElement;
+    if (isDark) {
+      html.classList.add("dark");
+      html.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      html.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
 
-  const handleThemeToggle = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const toggleTheme = () => setIsDark((prev) => !prev);
 
   const navItems = (
     <>
@@ -35,7 +44,10 @@ export const Navbar = () => {
         </li>
       )}
       <li>
-        <NavLink to="/upcomming-movies">Upcoming Movies</NavLink>
+        <NavLink to="/about">About</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact">Contact</NavLink>
       </li>
     </>
   );
@@ -43,6 +55,7 @@ export const Navbar = () => {
   const image = (
     <img
       className="rounded-full w-10"
+      referrerPolicy="no-refferer"
       src="https://i.ibb.co/kgSRLGw/mysterious-mafia-man-smoking-cigarette-52683-34828.jpg"
       alt="default-avatar"
     />
@@ -61,7 +74,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="navbar text-white bg-[#0000007c] relative z-[99] px-[5%]">
+    <div className="navbar sticky top-0 text-white bg-[#0000007c] z-[99] px-[5%]">
       <div className="drawer navbar-start">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
@@ -92,34 +105,51 @@ export const Navbar = () => {
       </div>
       <div className="navbar-end flex items-center gap-4">
         {/* Theme Toggle */}
-        <label className="swap swap-rotate">
-          <input
-            type="checkbox"
-            onChange={handleThemeToggle}
-            checked={theme === "dark"}
-          />
-          {/* Sun Icon */}
-          <svg
-            className="swap-on text-orange-500 fill-current w-8 h-8"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5.64 17.36a9 9 0 1112.72 0 9 9 0 01-12.72 0zM12 4V2m0 20v-2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M4 12H2m20 0h-2m-2.78-7.78l-1.42 1.42M6.64 19.78l-1.42-1.42" />
-          </svg>
-          {/* Moon Icon */}
-          <svg
-            className="swap-off fill-current w-8 h-8"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M21.4 13.3a9 9 0 11-8.7-8.7 7 7 0 108.7 8.7z" />
-          </svg>
-        </label>
+        <button
+          className="p-2 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center w-10 h-10 transition"
+          onClick={toggleTheme}
+          aria-label="Toggle Theme"
+        >
+          {isDark ? (
+            // Moon Icon for Dark Mode
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 text-yellow-400"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.752 15.002A9.718 9.718 0 0112 20.25 9.718 9.718 0 012.248 15.002M15.002 2.248A9.718 9.718 0 0112 3.75a9.718 9.718 0 01-3.002-1.502"
+              />
+            </svg>
+          ) : (
+            // Sun Icon for Light Mode
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 text-yellow-500"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3v1.5m0 13V21m9-9h-1.5m-13 0H3m15.364 6.364l-1.06-1.06m-10.606 0l-1.06 1.06m12.728-12.728l-1.06 1.06M6.364 5.636l-1.06-1.06M15.25 12a3.25 3.25 0 11-6.5 0 3.25 3.25 0 016.5 0z"
+              />
+            </svg>
+          )}
+        </button>
         <details className="dropdown dropdown-end">
           <summary className="btn btn-circle btn-ghost avatar m-1">
             {user ? (
               <img
                 className="rounded-full w-10"
+                referrerPolicy="no-referrer"
                 src={user.photoURL}
                 alt="user-avatar"
               />

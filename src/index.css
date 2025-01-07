@@ -8,3 +8,6 @@ svg.star-svg {
 /* #root {
   background-color: black;
 } */
+* {
+  scroll-behavior: smooth;
+}

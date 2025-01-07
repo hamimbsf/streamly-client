@@ -12,6 +12,8 @@ import ErrorPage from "../page/ErrorPage";
 import FavouriteMovie from "../page/FavouriteMovie";
 import UpcommingMovies from "../page/UpcommingMovies";
 import UpdateForm from "../page/UpdateForm";
+import AboutUs from "../page/AboutUs";
+import ContactUs from "../page/ContactUs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPass />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
       },
       {
         path: "/favourite-movies",
@@ -63,17 +73,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/movie/:id",
-        element: (
-          <PrivateRoute>
-            <MovieDetails />
-          </PrivateRoute>
-        ),
+        element: <MovieDetails />,
         loader: ({ params }) =>
           fetch(`https://streamly-puce.vercel.app/all-movies/${params.id}`),
       },
       {
         path: "/update/:id",
-        element: <UpdateForm />,
+        element: (
+          <PrivateRoute>
+            <UpdateForm />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://streamly-puce.vercel.app/all-movies/${params.id}`),
       },

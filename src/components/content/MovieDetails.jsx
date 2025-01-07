@@ -100,7 +100,7 @@ const MovieDetails = () => {
   return (
     <>
       <Helmet>
-        <title>Streamly || {title}</title>
+        <title>Streamly || {`${title}`}</title>
       </Helmet>
       <div className="bg-transparent container mx-auto my-8  rounded-lg overflow-hidden">
         {/* Movie Poster */}

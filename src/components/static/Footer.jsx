@@ -5,7 +5,9 @@ export const Footer = () => {
     <footer className="footer border-t border-x-0 border-b-0 border  container mx-auto mt-10 py-10 px-4 md:px-0">
       {/* <div className="divider text"></div> */}
       <aside>
-        <h1 className="text-4xl font-bold mb-5">Streamly</h1>
+        <a href="#banner">
+          <h1 className="text-4xl font-bold mb-5">Streamly</h1>
+        </a>
         <p>
           <span className="text-lg font-semibold">
             A movie streaming platform

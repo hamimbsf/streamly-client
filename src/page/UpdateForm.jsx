@@ -66,7 +66,7 @@ const UpdateForm = () => {
   return (
     <>
       <Helmet>
-        <title>Streamly Updated ||{title}</title>
+        <title>Streamly Updated ||{`${title}`}</title>
       </Helmet>
       <div
         className="hero absolute top-0 min-h-screen"
